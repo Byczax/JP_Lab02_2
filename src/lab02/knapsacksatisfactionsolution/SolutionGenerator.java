@@ -6,13 +6,13 @@ import lab02.datastorage.MusicList;
 
 public class SolutionGenerator {
 
-    public static void knapsackPositive(int concertLength, ArrayList<MusicList> musicList) throws Exception {
+    public static void knapsackPositive(int concertLength, ArrayList<MusicList> musicList) {
         int[] songLengths = musicList.stream().mapToInt(MusicList::getLength).toArray();
         int howManySongs = songLengths.length;
 
         var lowestPositivePopularityOption = musicList.stream().mapToInt(MusicList::getPositiveSatisfaction).min();
         if (lowestPositivePopularityOption.isEmpty())
-            throw new Exception("This shouldn't be happening");
+            throw new RuntimeException("Unexpected empty lowestPositivePopularityOption");
         int lowestPositivePopularity = lowestPositivePopularityOption.getAsInt();
 
         int[] songPopularity;
@@ -45,13 +45,13 @@ public class SolutionGenerator {
         }
     }
 
-    public static void knapsackNegative(int concertLength, ArrayList<MusicList> musicList) throws Exception {
+    public static void knapsackNegative(int concertLength, ArrayList<MusicList> musicList) {
         int[] songLengths = musicList.stream().mapToInt(MusicList::getLength).toArray();
         int howManySongs = songLengths.length;
 
         var highestNegativePopularityOption = musicList.stream().mapToInt(MusicList::getNegativeSatisfaction).max();
         if (highestNegativePopularityOption.isEmpty())
-            throw new Exception("This shouldn't be happening");
+            throw new RuntimeException("Unexpected empty lowestPositivePopularityOption");
         var highestNegativePopularity = highestNegativePopularityOption.getAsInt();
 
         int[] songPopularity;
