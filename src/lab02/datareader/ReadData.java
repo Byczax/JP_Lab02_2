@@ -62,15 +62,15 @@ public class ReadData {
         return userDataList;
     }
 
-    public static long readDataFromUser(String text) {
+    public static int readDataFromUser(String text) {
         Scanner scanner = new Scanner(System.in);
         System.out.println(text);
-        long userValue = 0;
+        int userValue = 0;
         boolean error;
         do {
             error = false;
             try {
-                userValue = Long.parseLong(scanner.nextLine());
+                userValue = Integer.parseInt(scanner.nextLine());
             } catch (Exception e) {
                 error = true;
                 System.out.println("Wrong value, enter your value again");

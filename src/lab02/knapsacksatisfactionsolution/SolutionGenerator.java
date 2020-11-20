@@ -66,7 +66,7 @@ public class SolutionGenerator {
                 } else if (songLengths[i - 1] <= j) {
                     weight[i][j] = Math.max(songPopularity[i - 1] + weight[i - 1][j - songLengths[i - 1]], weight[i - 1][j]);
                 } else {
-                    weight[i - 1][j] = weight[i][j];
+                    weight[i-1][j] = weight[i][j];
                 }
             }
         }
